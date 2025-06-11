@@ -1,0 +1,175 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('day.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    .dark-mode {
+      background: url('night.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ddd;
+    }
+
+    .title {
+      font-family: 'Great Vibes', 'Libre Baskerville', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: inherit;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      letter-spacing: 1px;
+    }
+
+
+    .stopwatch {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .time {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .buttons button,
+    .export-laps {
+      padding: 12px 24px;
+      margin: 10px 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #fff;
+      color: #0072ff;
+      transition: all 0.3s ease;
+    }
+
+    .buttons button:hover,
+    .export-laps:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    .laps {
+      margin-top: 25px;
+      max-height: 180px;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 10px;
+      width: 100%;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .laps div {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 1rem;
+    }
+
+    .toggle-container {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toggle-dark-mode {
+      appearance: none;
+      width: 50px;
+      height: 25px;
+      background: #ccc;
+      border-radius: 25px;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    .toggle-dark-mode::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 21px;
+      height: 21px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-dark-mode:checked {
+      background: #666;
+    }
+
+    .toggle-dark-mode:checked::before {
+      transform: translateX(25px);
+    }
+
+    .toggle-container .toggle-icon {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-dark-mode:checked ~ #night,
+    .toggle-dark-mode:not(:checked) ~ #morning {
+      transform: rotate(360deg);
+    }
+
+    @media (max-width: 500px) {
+      .stopwatch {
+        padding: 30px 20px;
+      }
+
+      .time {
+        font-size: 3rem;
+      }
+      .laps.hidden {
+         display: none;
+      }
+    }
