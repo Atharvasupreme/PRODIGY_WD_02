@@ -6,8 +6,10 @@
     }
 
     body {
-      background: url('day.jpg') no-repeat center center fixed;
+      background: url('day.jpg') no-repeat center center;
+      background-attachment: scroll;
       background-size: cover;
+      overscroll-behavior: none;
       color: #fff;
       display: flex;
       flex-direction: column;
